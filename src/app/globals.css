@@ -2,7 +2,12 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
+  --muted: #b5b5b5;
+  --card-bg: #ffffff;
+  --card-border: #ebebeb;
+  --accent: #1a1a1a;
+  --nav-text: #999999;
 }
 
 @theme inline {
@@ -12,15 +17,120 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-newsreader), Georgia, 'Times New Roman', serif;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Card styles ── */
+.card {
+  background: #f9f9f8;
+  border: none;
+  border-radius: 8px;
+  box-shadow: none;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-4px);
+  background: #fafaf9;
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1),
+              0 8px 16px -8px rgba(0, 0, 0, 0.06);
+}
+
+/* Arrow icon circle on cards */
+.card-arrow {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.card:hover .card-arrow {
+  background: #f5f5f5;
+  border-color: #ddd;
+}
+
+/* Link underline animation */
+.link-underline {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1.5px;
+  transition: background-size 0.3s ease;
+}
+.link-underline:hover {
+  background-size: 100% 1.5px;
+}
+
+/* Wavy underline - always visible */
+.wavy-underline {
+  text-decoration-style: wavy;
+  text-decoration-line: underline;
+  text-decoration-color: #60a5fa;
+  text-underline-offset: 4px;
+}
+
+/* Wavy underline - only on hover */
+.wavy-hover {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.3s ease;
+}
+.wavy-hover:hover {
+  text-decoration-color: #60a5fa;
+}
+
+/* ── Fade in animation ── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  opacity: 0;
+}
+
+.delay-0 { animation-delay: 0s; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.15s; }
+.delay-3 { animation-delay: 0.2s; }
+.delay-4 { animation-delay: 0.25s; }
+.delay-5 { animation-delay: 0.3s; }
+.delay-6 { animation-delay: 0.35s; }
+.delay-7 { animation-delay: 0.4s; }
+
+/* ── Scrollbar styling ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 3px;
 }
