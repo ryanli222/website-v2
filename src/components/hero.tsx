@@ -1,6 +1,6 @@
 export function Hero() {
   return (
-    <section className="animate-fade-in delay-1 pt-2 pb-4 max-w-[560px]">
+    <section className="animate-hero-fade pt-2 pb-4 max-w-[560px]">
       <p className="text-[28px] md:text-[32px] leading-[1.45] text-[#c0c0c0] font-light">
         Hey there, I&apos;m{" "}
         <span className="text-[#1a1a1a] font-light">Ryan</span>{" "}

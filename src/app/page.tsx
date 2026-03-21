@@ -14,22 +14,26 @@ export default function Home() {
         <main className="pb-16">
           {/* Two-column layout */}
           <div className="flex flex-col lg:flex-row lg:gap-10">
-            {/* Left column - intro text, aligned with card tops */}
-            <div className="lg:w-[48%]">
+            {/* Left column - intro text */}
+            <div className="lg:w-[40%]">
               <Hero />
             </div>
 
-            {/* Right column - cards start at same level */}
-            <div className="lg:w-[52%] flex flex-col gap-4 pt-2 lg:pt-0">
+            {/* Right column - wider for Canopi */}
+            <div className="lg:w-[60%] flex flex-col gap-4 pt-2 lg:pt-0">
               <ProjectCard
                 title="Canopi"
                 category="Projects"
+                image="/canopi.png"
+                imageStyle="bottom"
                 delay="delay-2"
+                href="/projects/canopi"
               />
               <ProjectCard
                 title="Robotic Hand"
                 category="Projects"
                 delay="delay-3"
+                href="/projects/robotic-hand"
               />
             </div>
           </div>
@@ -40,11 +44,15 @@ export default function Home() {
               title="Motion Camera"
               category="Projects"
               delay="delay-4"
+              href="/projects/motion-camera"
             />
             <ProjectCard
               title="ESP32 Network"
               category="Projects"
+              image="/esp32.png"
+              imageStyle="overflow"
               delay="delay-5"
+              href="/projects/esp32-network"
             />
           </div>
 

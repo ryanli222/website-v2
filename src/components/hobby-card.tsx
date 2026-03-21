@@ -9,8 +9,9 @@ interface HobbyCardProps {
 
 export function HobbyCard({ title, image, emoji, delay }: HobbyCardProps) {
   return (
-    <div className={`animate-fade-in ${delay} card group`}>
-      <div className="flex items-center justify-between px-5 pt-4 pb-2">
+    <div className={`animate-fade-in ${delay} card group aspect-square relative overflow-hidden`}>
+      {/* Title row */}
+      <div className="relative z-10 flex items-center justify-between px-5 pt-4 pb-2">
         <span
           className="text-[13px] text-[#999]"
           style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
@@ -29,22 +30,24 @@ export function HobbyCard({ title, image, emoji, delay }: HobbyCardProps) {
           </svg>
         </div>
       </div>
-      <div className="flex items-center justify-center h-[140px] overflow-hidden px-4 pb-4">
-        {image ? (
-          <div className="relative w-full h-full transition-transform duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.05]">
-            <Image
-              src={image}
-              alt={title}
-              fill
-              className="object-cover rounded-md"
-            />
-          </div>
-        ) : (
+
+      {/* Image fills most of the card, offset down slightly to reveal title */}
+      {image ? (
+        <div className="absolute inset-0 top-[44px] transition-[top] duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:top-0 z-20">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover"
+          />
+        </div>
+      ) : (
+        <div className="flex items-center justify-center flex-1 h-[calc(100%-44px)]">
           <span className="text-5xl select-none transition-transform duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.15]">
             {emoji}
           </span>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

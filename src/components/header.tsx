@@ -1,23 +1,32 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 
 const leftLinks = [
-  { label: "Ryan", href: "/", isName: true },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Hobbies", href: "#hobbies" },
+  { label: "ryan", href: "/", isName: true },
+  { label: "projects", href: "/#projects" },
+  { label: "experience", href: "/#experience" },
+  { label: "hobbies", href: "/#hobbies" },
 ];
 
 const rightLinks = [
-  { label: "GitHub", href: "https://github.com", external: true },
-  { label: "LinkedIn", href: "https://linkedin.com", external: true },
-  { label: "CV", href: "/resume" },
+  { label: "github", href: "https://github.com", external: true },
+  { label: "linkedin", href: "https://linkedin.com", external: true },
+  { label: "cv", href: "/resume" },
 ];
 
-export function Header() {
+interface HeaderProps {
+  activeTab?: string;
+}
+
+export function Header({ activeTab }: HeaderProps = {}) {
+  const defaultIdx = activeTab
+    ? leftLinks.findIndex((l) => l.label === activeTab)
+    : 0;
+
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-  const [activeIdx, setActiveIdx] = useState<number>(0);
+  const [activeIdx, setActiveIdx] = useState<number>(defaultIdx >= 0 ? defaultIdx : 0);
   const navRef = useRef<HTMLDivElement>(null);
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
@@ -50,11 +59,11 @@ export function Header() {
   }, [hoveredIdx, activeIdx]);
 
   return (
-    <header className="animate-fade-in delay-0 flex items-center justify-between pt-4 pb-3 -ml-6">
+    <header className="flex items-center justify-between pt-4 pb-3 -ml-6">
       {/* Left nav with sliding pill */}
       <div
         ref={navRef}
-        className="relative flex items-center gap-0 text-[13px] rounded-lg border border-[#eee] bg-white px-0.5 py-0.5"
+        className="animate-slide-left relative flex items-center gap-0 text-[13px] rounded-lg border border-[#eee] bg-white px-0.5 py-0.5"
         style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif", boxShadow: "0 2px 8px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)" }}
         onMouseLeave={() => setHoveredIdx(null)}
       >
@@ -70,7 +79,7 @@ export function Header() {
         />
 
         {leftLinks.map((link, i) => (
-          <a
+          <Link
             key={link.label}
             ref={(el) => { linkRefs.current[i] = el; }}
             href={link.href}
@@ -83,13 +92,13 @@ export function Header() {
             onClick={() => setActiveIdx(i)}
           >
             {link.label}
-          </a>
+          </Link>
         ))}
       </div>
 
       {/* Right nav */}
       <nav
-        className="flex items-center gap-5 text-[13px] text-[#999]"
+        className="animate-slide-left flex items-center gap-5 text-[13px] text-[#999]"
         style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
       >
         {rightLinks.map((link) => (

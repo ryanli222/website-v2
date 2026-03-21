@@ -1,9 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProjectCardProps {
   title: string;
   category: string;
   image?: string;
+  imageStyle?: "contain" | "bottom" | "overflow" | "full";
   delay: string;
   href?: string;
 }
@@ -12,11 +14,12 @@ export function ProjectCard({
   title,
   category,
   image,
+  imageStyle = "contain",
   delay,
   href = "#",
 }: ProjectCardProps) {
   return (
-    <a
+    <Link
       href={href}
       className={`animate-fade-in ${delay} card block group`}
     >
@@ -41,20 +44,20 @@ export function ProjectCard({
         </div>
       </div>
 
-      {/* Content area - no inner bg, card itself darkens on hover */}
-      <div className="flex items-center justify-center h-[300px] overflow-hidden px-6 pb-5">
+      {/* Content area */}
+      <div className={`flex items-end justify-center ${imageStyle === "full" ? "h-[350px]" : "h-[300px]"} ${imageStyle === "overflow" ? "overflow-visible" : "overflow-hidden"} ${imageStyle === "full" ? "px-0 pb-0" : imageStyle === "bottom" ? "px-4 pb-0" : imageStyle === "overflow" ? "px-6 pb-0" : "px-6 pb-5"}`}>
         {image ? (
-          <div className="relative w-full h-full transition-transform duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.05]">
+          <div className={`relative transition-transform duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.05] ${imageStyle === "full" ? "h-full w-full" : imageStyle === "bottom" ? "h-[95%] w-full" : imageStyle === "overflow" ? "h-[110%] w-[70%] translate-y-[15%] group-hover:translate-y-[8%]" : "h-full w-full"}`}>
             <Image
               src={image}
               alt={title}
               fill
-              className="object-contain drop-shadow-lg"
+              className={`${imageStyle === "full" ? "object-cover" : "drop-shadow-lg"} ${imageStyle === "bottom" ? "object-contain object-bottom" : imageStyle === "overflow" ? "object-contain drop-shadow-xl" : imageStyle === "full" ? "" : "object-contain"}`}
             />
           </div>
         ) : (
           <div
-            className="w-[75%] h-[80%] bg-white rounded-md flex items-center justify-center transition-transform duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.05]"
+            className="w-[75%] h-[80%] bg-white rounded-md flex items-center justify-center transition-transform duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.05] mb-5"
             style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.08)" }}
           >
             <span
@@ -66,6 +69,6 @@ export function ProjectCard({
           </div>
         )}
       </div>
-    </a>
+    </Link>
   );
 }

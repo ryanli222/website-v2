@@ -7,8 +7,8 @@ interface ExperienceCardProps {
 
 export function ExperienceCard({ role, company, description, delay }: ExperienceCardProps) {
   return (
-    <div className={`animate-fade-in ${delay} card px-5 py-4`}>
-      <div className="flex items-center justify-between mb-1">
+    <div className={`animate-fade-in ${delay} card px-6 py-5`}>
+      <div className="flex items-center justify-between mb-3">
         <span
           className="text-[13px] text-[#999]"
           style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
@@ -28,13 +28,13 @@ export function ExperienceCard({ role, company, description, delay }: Experience
         </div>
       </div>
       <h3
-        className="text-[15px] font-medium text-[#1a1a1a] mb-1"
+        className="text-[20px] font-medium text-[#1a1a1a] mb-2"
         style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
       >
         {role}
       </h3>
       <p
-        className="text-[13px] text-[#999] leading-relaxed"
+        className="text-[15px] text-[#999] leading-relaxed"
         style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
       >
         {description}
