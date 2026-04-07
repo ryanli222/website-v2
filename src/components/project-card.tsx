@@ -6,6 +6,7 @@ interface ProjectCardProps {
   category: string;
   image?: string;
   imageStyle?: "contain" | "bottom" | "overflow" | "full";
+  hoverScale?: number;
   delay: string;
   href?: string;
 }
@@ -15,6 +16,7 @@ export function ProjectCard({
   category,
   image,
   imageStyle = "contain",
+  hoverScale,
   delay,
   href = "#",
 }: ProjectCardProps) {
@@ -47,7 +49,7 @@ export function ProjectCard({
       {/* Content area */}
       <div className={`flex items-end justify-center ${imageStyle === "full" ? "h-[350px]" : "h-[300px]"} ${imageStyle === "overflow" ? "overflow-visible" : "overflow-hidden"} ${imageStyle === "full" ? "px-0 pb-0" : imageStyle === "bottom" ? "px-4 pb-0" : imageStyle === "overflow" ? "px-6 pb-0" : "px-6 pb-5"}`}>
         {image ? (
-          <div className={`relative transition-transform duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.05] ${imageStyle === "full" ? "h-full w-full" : imageStyle === "bottom" ? "h-[95%] w-full" : imageStyle === "overflow" ? "h-[110%] w-[70%] translate-y-[15%] group-hover:translate-y-[8%]" : "h-full w-full"}`}>
+          <div className={`card-image relative transition-transform duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${imageStyle === "full" ? "h-full w-full" : imageStyle === "bottom" ? "h-[95%] w-full" : imageStyle === "overflow" ? "h-[110%] w-[70%] translate-y-[15%] group-hover:translate-y-[8%]" : "h-full w-full"}`} style={{ "--hover-scale": hoverScale ?? 1.05 } as React.CSSProperties}>
             <Image
               src={image}
               alt={title}

@@ -34,6 +34,7 @@ export default function Home() {
                 category="Projects"
                 image="/hand.png"
                 imageStyle="bottom"
+                hoverScale={1.15}
                 delay="delay-3"
                 href="/projects/robotic-hand"
               />
