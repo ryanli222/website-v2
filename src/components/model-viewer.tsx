@@ -78,12 +78,12 @@ function Model({
     }) | null;
     const fitHeightDistance = modelSize / (2 * Math.tan((Math.PI * camera.fov) / 360));
     const fitWidthDistance = fitHeightDistance / camera.aspect;
-    const distance = Math.max(fitHeightDistance, fitWidthDistance) * 0.62;
+    const distance = Math.max(fitHeightDistance, fitWidthDistance) * 0.5;
 
-    camera.position.set(modelSize * 0.02, modelSize * 0.13, distance);
+    camera.position.set(modelSize * 0.02, modelSize * 0.17, distance);
 
     if (controls) {
-      controls.target.set(modelSize * 0.025, modelSize * 0.24, 0);
+      controls.target.set(modelSize * 0.05, modelSize * 0.34, 0);
       controls.minDistance = modelSize * 0.2;
       controls.maxDistance = modelSize * 4;
       controls.maxTargetRadius = modelSize * 0.75;

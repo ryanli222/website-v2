@@ -100,6 +100,28 @@ body {
   text-decoration-color: #60a5fa;
 }
 
+.section-title-flash {
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+  animation: sectionTitleFlash 1.4s ease forwards;
+}
+
+@keyframes sectionTitleFlash {
+  0% {
+    text-decoration-color: transparent;
+  }
+  20% {
+    text-decoration-color: rgba(26, 26, 26, 0.95);
+  }
+  70% {
+    text-decoration-color: rgba(26, 26, 26, 0.95);
+  }
+  100% {
+    text-decoration-color: transparent;
+  }
+}
+
 /* ── Slide in from left (header) ── */
 @keyframes slideInLeft {
   0% {
