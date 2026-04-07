@@ -26,10 +26,6 @@ export function Hero() {
         <span className="text-[#1a1a1a] font-light link-underline cursor-pointer">
           music
         </span>
-        , watching{" "}
-        <span className="text-[#1a1a1a] font-light link-underline cursor-pointer">
-          anime
-        </span>
         , and working on{" "}
         <span className="text-[#1a1a1a] font-light link-underline cursor-pointer">
           robots

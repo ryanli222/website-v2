@@ -32,6 +32,8 @@ export default function Home() {
               <ProjectCard
                 title="Robotic Hand"
                 category="Projects"
+                image="/hand.png"
+                imageStyle="bottom"
                 delay="delay-3"
                 href="/projects/robotic-hand"
               />
@@ -57,22 +59,18 @@ export default function Home() {
           </div>
 
           {/* Experience */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <div className="mt-4">
             <ExperienceCard
-              role="Firmware Engineer"
+              role="Suspension + Firmware Engineer"
               company="UWFE"
-              description="CAN bus communication, sensor integration, and real-time control loops for the electric race car."
+              description="CAN bus communication, sensor integration, and real-time control loops for the electric race car. Suspension geometry design and analysis for the mechanical performance of the vehicle."
+              image="/car.png"
               delay="delay-6"
-            />
-            <ExperienceCard
-              role="Suspension"
-              company="UWFE"
-              description="Suspension geometry design and analysis for the mechanical performance of the vehicle."
-              delay="delay-7"
             />
           </div>
 
           {/* Hobbies */}
+          {false &&(
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
             <HobbyCard
               title="Music"
@@ -85,6 +83,7 @@ export default function Home() {
               delay="delay-7"
             />
           </div>
+          )}
         </main>
 
         <Footer />

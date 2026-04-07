@@ -19,9 +19,20 @@ export const projects: Project[] = [
   {
     slug: "canopi",
     title: "Canopi",
-    subtitle: "Environmental Monitoring Platform",
+    subtitle: "Find your place. Not just an apartment.",
     date: "2025",
-    stack: ["React", "Node.js", "IoT", "Cloud"],
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Gemini AI",
+      "Mapbox GL",
+      "Three.js",
+      "Supabase",
+      "Tailwind CSS",
+      "ElevenLabs",
+      "Vultr",
+    ],
     image: "/canopi.png",
     imageStyle: "bottom",
     sections: [
@@ -29,19 +40,25 @@ export const projects: Project[] = [
         id: "overview",
         title: "Overview",
         content:
-          "Canopi is an environmental monitoring platform that collects and visualizes real-time data from distributed sensor networks. The system provides actionable insights for sustainability efforts through an intuitive dashboard interface.",
+          "Canopi is an AI-powered rental discovery platform that replaces traditional filters with conversation. Instead of searching by beds and price, users talk to an AI assistant that infers their lifestyle across 8 preference axes — walkability, nourishment, wellness, greenery, buzz, essentials, safety, and transit. A live radar chart updates in real time as the AI learns who you are, and the map re-ranks 200+ real Canadian listings to match your actual life, not just your budget. Each listing is enriched with nearby cafés, parks, gyms, groceries, transit stops, pharmacies, and schools within 1 km, and users can explore neighborhoods in a 3D diorama built with Three.js.",
       },
       {
         id: "how-it-works",
         title: "How It Works",
         content:
-          "The platform consists of a React-based frontend dashboard that connects to a Node.js backend API. Sensor data is ingested through IoT protocols and stored in a time-series database, enabling real-time visualization and historical trend analysis.",
+          "The AI layer is built around structured JSON output from Google Gemini 2.5 Flash — every response returns both a natural language reply and a partial update to the 8-axis preference vector. The frontend merges these updates incrementally so the radar chart and listing rankings evolve fluidly as conversation develops. On the data side, we built a custom scraping and enrichment pipeline that deduplicates listings, normalizes inconsistent fields, geocodes addresses, and enriches each property with nearby amenity context from OpenStreetMap's Overpass API. The frontend is Next.js 16 with React 19 and TypeScript, the map runs on Mapbox GL 3, and the 3D diorama uses @react-three/fiber. Auth and persistence are handled by Supabase, voice I/O by ElevenLabs, and the backend runs on a Vultr cloud instance in Toronto secured with Tailscale.",
       },
       {
         id: "results",
         title: "Results",
         content:
-          "The platform successfully demonstrates end-to-end environmental data collection, processing, and visualization with low-latency updates and a responsive user interface.",
+          "We shipped a fully working AI-to-map feedback loop — talk to the assistant, watch the map change. The platform serves 200+ real, enriched Canadian rental listings with smooth real-time re-ranking on every preference update. We also delivered voice input/output, French language support, a 3D neighborhood diorama, and Supabase-backed saved listings. The biggest challenge was data acquisition — rental platforms in Canada are fragmented and hostile to reuse, so we had to fight through inconsistent formats, missing fields, and freeform descriptions before we could even start on the product.",
+      },
+       {
+        id: "try it out: ",
+        title: "Try it Out",
+        content:
+          "canopi-ai.vercel.app",
       },
     ],
   },
@@ -112,19 +129,19 @@ export const projects: Project[] = [
         id: "overview",
         title: "Overview",
         content:
-          "A self-organizing mesh network built with ESP32 microcontrollers, enabling distributed sensor data collection across a wide area without relying on centralized Wi-Fi infrastructure.",
+          "",
       },
       {
         id: "how-it-works",
         title: "How It Works",
         content:
-          "Each ESP32 node runs the ESP-MDF mesh networking stack, automatically discovering and connecting to neighboring nodes. Data is routed through the mesh to a root node that bridges to a standard Wi-Fi network and publishes sensor readings via MQTT.",
+          "",
       },
       {
         id: "results",
         title: "Results",
         content:
-          "The mesh network demonstrates reliable multi-hop communication between nodes with automatic topology recovery when nodes are added or removed from the network.",
+          "",
       },
     ],
   },

@@ -11,8 +11,8 @@ const leftLinks = [
 ];
 
 const rightLinks = [
-  { label: "github", href: "https://github.com", external: true },
-  { label: "linkedin", href: "https://linkedin.com", external: true },
+  { label: "github", href: "https://github.com/ryanli222", external: true },
+  { label: "linkedin", href: "https://www.linkedin.com/in/ryanli222/", external: true },
   { label: "cv", href: "/resume" },
 ];
 

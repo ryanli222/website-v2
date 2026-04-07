@@ -14,9 +14,17 @@ export default function ProjectPage() {
   const project = getProjectBySlug(slug);
 
   const [activeSection, setActiveSection] = useState<string>("");
+  const getSectionAnchor = (sectionId: string) =>
+    sectionId
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
 
   useEffect(() => {
     if (!project) return;
+
+    const sectionAnchors = project.sections.map((section) => getSectionAnchor(section.id));
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -30,11 +38,29 @@ export default function ProjectPage() {
     );
 
     for (const section of project.sections) {
-      const el = document.getElementById(section.id);
+      const el = document.getElementById(getSectionAnchor(section.id));
       if (el) observer.observe(el);
     }
 
-    return () => observer.disconnect();
+    const handleScroll = () => {
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const pageHeight = document.documentElement.scrollHeight;
+
+      if (pageHeight - scrollPosition <= 8) {
+        const lastSection = sectionAnchors[sectionAnchors.length - 1];
+        if (lastSection) {
+          setActiveSection(lastSection);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [project]);
 
   if (!project) {
@@ -50,6 +76,9 @@ export default function ProjectPage() {
       </div>
     );
   }
+
+  const normalizeExternalHref = (href: string) =>
+    /^https?:\/\//i.test(href) ? href : `https://${href}`;
 
   return (
     <div className="flex flex-col flex-1 items-center bg-white min-h-screen">
@@ -120,15 +149,33 @@ export default function ProjectPage() {
               {project.sections.map((section, i) => (
                 <section
                   key={section.id}
-                  id={section.id}
-                  className={`animate-fade-in delay-${Math.min(i + 3, 7)} mb-12`}
+                  id={getSectionAnchor(section.id)}
+                  className={`animate-fade-in delay-${Math.min(i + 3, 7)} mb-20 md:mb-24`}
                 >
-                  <h2 className="text-[22px] md:text-[24px] font-bold text-[#1a1a1a] mb-5 lowercase">
-                    {section.title}
-                  </h2>
-                  <p className="text-[16px] md:text-[17px] leading-[1.8] text-[#444]">
-                    {section.content}
-                  </p>
+                  {section.title.toLowerCase() === "try it out" ? (
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-2 mb-5">
+                      <h2 className="text-[22px] md:text-[24px] font-bold text-[#1a1a1a] lowercase">
+                        try it out! :
+                      </h2>
+                      <a
+                        href={normalizeExternalHref(section.content)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[16px] md:text-[17px] leading-[1.8] text-[#1a1a1a] underline decoration-[#ccc] underline-offset-2 hover:decoration-[#1a1a1a] transition-colors"
+                      >
+                        {section.content}
+                      </a>
+                    </div>
+                  ) : (
+                    <>
+                      <h2 className="text-[22px] md:text-[24px] font-bold text-[#1a1a1a] mb-5 lowercase">
+                        {section.title}
+                      </h2>
+                      <p className="text-[16px] md:text-[17px] leading-[1.8] text-[#444]">
+                        {section.content}
+                      </p>
+                    </>
+                  )}
                 </section>
               ))}
             </div>
@@ -146,9 +193,9 @@ export default function ProjectPage() {
                   {project.sections.map((section) => (
                     <li key={section.id}>
                       <a
-                        href={`#${section.id}`}
+                        href={`#${getSectionAnchor(section.id)}`}
                         className={`text-[14px] transition-colors duration-200 lowercase ${
-                          activeSection === section.id
+                          activeSection === getSectionAnchor(section.id)
                             ? "text-[#1a1a1a] font-medium"
                             : "text-[#bbb] hover:text-[#666]"
                         }`}
