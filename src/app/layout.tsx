@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { Newsreader } from "next/font/google";
+import { AnimationManager } from "@/components/animation-manager";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,8 +28,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${newsreader.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${geistSans.variable} ${newsreader.variable}`} suppressHydrationWarning>
+      <body>
+        {/* Runs synchronously before any content renders — prevents animation flash */}
+        <script dangerouslySetInnerHTML={{ __html: `try{if(sessionStorage.getItem('visited')||window.location.pathname!=='/')document.documentElement.classList.add('no-animations')}catch(e){}` }} />
+        <AnimationManager />
+        {children}
+      </body>
     </html>
   );
 }

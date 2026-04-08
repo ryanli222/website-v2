@@ -19,15 +19,13 @@ export default function Home() {
               <Hero />
             </div>
 
-            {/* Right column - wider for Canopi */}
+            {/* Right column - featured project */}
             <div className="lg:w-[60%] flex flex-col gap-4 pt-2 lg:pt-0">
               <ProjectCard
-                title="Canopi"
-                category="Projects"
-                image="/canopi.png"
-                imageStyle="bottom"
+                title="Autonomous Wheelchair"
+                category="YHack 1st Place Hardware"
                 delay="delay-2"
-                href="/projects/canopi"
+                href="/projects/autonomous-wheelchair"
               />
               <ProjectCard
                 title="Robotic Hand"
@@ -44,16 +42,18 @@ export default function Home() {
           {/* Full-width cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             <ProjectCard
-              title="Motion Camera"
+              title="Canopi"
               category="Projects"
+              image="/canopi.png"
+              imageStyle="bottom"
               delay="delay-4"
-              href="/projects/motion-camera"
+              href="/projects/canopi"
             />
             <ProjectCard
               title="ESP32 Network"
               category="Projects"
               image="/esp32.png"
-              imageStyle="overflow"
+              imageStyle="bottom"
               delay="delay-5"
               href="/projects/esp32-network"
             />

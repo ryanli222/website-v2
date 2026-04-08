@@ -189,6 +189,74 @@ body {
 .delay-6 { animation-delay: 2.05s; }
 .delay-7 { animation-delay: 2.15s; }
 
+/* ── Quick pop animation (non-home pages or repeat visits) ── */
+@keyframes quickPop {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.no-animations .animate-fade-in,
+.no-animations .animate-slide-left,
+.no-animations .animate-hero-fade {
+  animation: quickPop 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards !important;
+}
+
+/* ── Hobby blocks: slide in from all directions ── */
+@keyframes slideFromLeft {
+  0% { transform: translateX(-80px); opacity: 0; }
+  60% { transform: translateX(6px); opacity: 1; }
+  80% { transform: translateX(-2px); }
+  100% { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideFromRight {
+  0% { transform: translateX(80px); opacity: 0; }
+  60% { transform: translateX(-6px); opacity: 1; }
+  80% { transform: translateX(2px); }
+  100% { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideFromTop {
+  0% { transform: translateY(-80px); opacity: 0; }
+  60% { transform: translateY(6px); opacity: 1; }
+  80% { transform: translateY(-2px); }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes slideFromBottom {
+  0% { transform: translateY(80px); opacity: 0; }
+  60% { transform: translateY(-6px); opacity: 1; }
+  80% { transform: translateY(2px); }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.hobby-block {
+  opacity: 0;
+}
+.hobby-slide-left {
+  animation: slideFromLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hobby-slide-right {
+  animation: slideFromRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hobby-slide-top {
+  animation: slideFromTop 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hobby-slide-bottom {
+  animation: slideFromBottom 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.no-animations .hobby-block {
+  animation: quickPop 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards !important;
+}
+
 /* ── Scrollbar styling ── */
 ::-webkit-scrollbar {
   width: 6px;

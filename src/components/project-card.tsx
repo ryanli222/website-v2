@@ -6,6 +6,7 @@ interface ProjectCardProps {
   category: string;
   image?: string;
   imageStyle?: "contain" | "bottom" | "overflow" | "full";
+  icon?: React.ReactNode;
   hoverScale?: number;
   delay: string;
   href?: string;
@@ -16,6 +17,7 @@ export function ProjectCard({
   category,
   image,
   imageStyle = "contain",
+  icon,
   hoverScale,
   delay,
   href = "#",
@@ -56,6 +58,10 @@ export function ProjectCard({
               fill
               className={`${imageStyle === "full" ? "object-cover" : "drop-shadow-lg"} ${imageStyle === "bottom" ? "object-contain object-bottom" : imageStyle === "overflow" ? "object-contain drop-shadow-xl" : imageStyle === "full" ? "" : "object-contain"}`}
             />
+          </div>
+        ) : icon ? (
+          <div className="flex items-center justify-center h-full w-full transition-transform duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.08]">
+            {icon}
           </div>
         ) : (
           <div

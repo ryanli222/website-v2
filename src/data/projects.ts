@@ -12,15 +12,43 @@ export interface Project {
     id: string;
     title: string;
     content: string;
+    image?: string;
   }[];
 }
 
 export const projects: Project[] = [
   {
+    slug: "autonomous-wheelchair",
+    title: "Autonomous Wheelchair Attachment",
+    subtitle: "YHack 1st Place Hardware — Self-Driving Wheelchair Add-On",
+    date: "2026",
+    stack: ["Python", "ROS", "LiDAR", "Raspberry Pi", "Computer Vision", "3D Printing"],
+    sections: [
+      {
+        id: "overview",
+        title: "Overview",
+        content:
+          "An autonomous navigation attachment that bolts onto any standard wheelchair, giving it self-driving capabilities without replacing the chair itself. Built in 24 hours at YHack and awarded 1st place in the hardware track. The system uses LiDAR and computer vision to map its surroundings, plan obstacle-free paths, and drive the wheelchair to a user-selected destination.",
+      },
+      {
+        id: "how-it-works",
+        title: "How It Works",
+        content:
+          "A Raspberry Pi serves as the main compute unit, fusing data from a 2D LiDAR scanner and a camera running a lightweight object-detection model. The navigation stack handles SLAM-based mapping, path planning, and motor control through a custom drive module that interfaces with the wheelchair's wheels. The entire attachment is designed to be removable — it clamps onto the frame and connects to the wheels through a friction-drive mechanism, so the wheelchair can still be used manually at any time.",
+      },
+      {
+        id: "results",
+        title: "Results",
+        content:
+          "The prototype successfully navigated an indoor course at YHack, avoiding static and dynamic obstacles in real time. Judges awarded it 1st place in the hardware category for the combination of practical impact, technical execution, and the fact that it augments existing wheelchairs rather than replacing them.",
+      },
+    ],
+  },
+  {
     slug: "canopi",
     title: "Canopi",
     subtitle: "Find your place. Not just an apartment.",
-    date: "2025",
+    date: "2026",
     stack: [
       "Next.js",
       "React",
@@ -66,8 +94,10 @@ export const projects: Project[] = [
     slug: "robotic-hand",
     title: "Robotic Hand",
     subtitle: "Gesture-Controlled Prosthetic Prototype",
-    date: "2025",
+    date: "2026",
     stack: ["C++", "Arduino", "3D Printing", "Servo Motors"],
+    image: "/hand.png",
+    imageStyle: "bottom",
     sections: [
       {
         id: "overview",
@@ -92,36 +122,40 @@ export const projects: Project[] = [
   {
     slug: "motion-camera",
     title: "Motion Camera",
-    subtitle: "Motion-Triggered Wildlife Camera",
-    date: "2025",
-    stack: ["Python", "Raspberry Pi", "OpenCV", "GPIO"],
+    subtitle: "Smart Doorbell & Motion-Triggered Camera System",
+    date: "2026",
+    stack: ["Python", "Raspberry Pi", "OpenCV", "GPIO", "SQLite", "Flask"],
+    image: "/cam icon.png",
+    imageStyle: "bottom",
     sections: [
       {
         id: "overview",
         title: "Overview",
         content:
-          "A motion-triggered camera system built on Raspberry Pi that detects movement using computer vision and captures high-resolution images. Designed for wildlife monitoring and security applications.",
+          "A smart doorbell and motion-triggered camera system built on Raspberry Pi. When motion is detected — whether someone approaching the door or wildlife passing through — the system captures high-resolution images, logs them to a local SQLite database with timestamps and motion metadata, and serves them through a lightweight web dashboard for browsing the capture history.",
       },
       {
         id: "how-it-works",
         title: "How It Works",
         content:
-          "The system uses OpenCV for frame differencing to detect motion in real-time video streams. When motion exceeds a configurable threshold, the system captures and stores timestamped images. A PIR sensor provides hardware-level motion detection as a secondary trigger.",
+          "The system uses OpenCV frame differencing to detect motion in real-time video streams. A PIR sensor provides hardware-level motion detection as a secondary trigger, reducing false positives. When motion exceeds a configurable threshold the camera captures a burst of images, which are stored on disk and indexed in a SQLite database alongside timestamp, motion intensity, and bounding-box coordinates. A Flask web server exposes a simple dashboard where you can browse, filter, and review the picture database — essentially a doorbell camera you fully own and control.",
+        image: "/opencv cam demo.png",
       },
       {
         id: "results",
         title: "Results",
         content:
-          "The camera system reliably detects and captures motion events with configurable sensitivity, running continuously on low power with efficient storage management.",
+          "The system runs 24/7 on a Raspberry Pi 4, reliably capturing and cataloguing motion events with configurable sensitivity. The picture database grows automatically and can be browsed from any device on the local network. Low power consumption and efficient storage management make it practical as a long-running doorbell camera or wildlife monitor.",
+        image: "/doorbell data.png",
       },
     ],
   },
   {
     slug: "esp32-network",
     title: "ESP32 Network",
-    subtitle: "Mesh Networking with ESP32 Microcontrollers",
+    subtitle: "ESP32-Based Smart Home Hub",
     date: "2025",
-    stack: ["C", "ESP-IDF", "Wi-Fi Mesh", "MQTT"],
+    stack: ["C", "ESP-IDF", "Wi-Fi Mesh", "MQTT", "Node.js", "WebSockets"],
     image: "/esp32.png",
     imageStyle: "overflow",
     sections: [
@@ -129,19 +163,48 @@ export const projects: Project[] = [
         id: "overview",
         title: "Overview",
         content:
-          "",
+          "A home automation hub built around a mesh network of ESP32 microcontrollers. Each node handles a different task — temperature and humidity sensing, relay-controlled lighting, door/window contact monitoring, and motion detection — while a central Node.js server aggregates data, serves a real-time dashboard, and lets you control everything from your phone.",
+        image: "/inside of node.jpg",
       },
       {
         id: "how-it-works",
         title: "How It Works",
         content:
-          "",
+          "The ESP32 nodes form a self-healing Wi-Fi mesh using ESP-MDF, so adding a new sensor to a room is just plugging in another board. Each node publishes sensor readings and subscribes to control commands over MQTT. The central hub runs a Node.js server that bridges MQTT to a WebSocket-powered dashboard — sensor data streams in live, and toggling a light or setting a thermostat threshold pushes a command back down to the right node instantly. All telemetry is logged to a time-series store for historical graphs.",
+        image: "/espdata.png",
       },
       {
         id: "results",
         title: "Results",
         content:
-          "",
+          "The network reliably coordinates multiple ESP32 nodes across a house with sub-second latency between sensor events and dashboard updates. The mesh topology handles node drops gracefully, and the system has been running continuously as a fully self-hosted smart home setup — no cloud dependencies, no subscriptions, complete local control.",
+      },
+    ],
+  },
+  {
+    slug: "vex-drawing-robot",
+    title: "VEX Drawing Robot",
+    subtitle: "Autonomous Image-Tracing Robot",
+    date: "2026",
+    stack: ["C++", "VEX V5", "Python", "OpenCV", "Path Planning"],
+    sections: [
+      {
+        id: "overview",
+        title: "Overview",
+        content:
+          "A VEX robotics platform repurposed into an autonomous drawing machine. Given any input image, the robot converts it into a series of pen strokes and physically draws it on paper using a custom pen-holder mechanism mounted to the drivetrain.",
+      },
+      {
+        id: "how-it-works",
+        title: "How It Works",
+        content:
+          "A Python preprocessing pipeline takes an input image, applies edge detection and contour extraction with OpenCV, then converts the contours into an optimized sequence of waypoints using a nearest-neighbor path planner to minimize pen-up travel time. The waypoints are sent to the VEX V5 brain over serial, which executes them as coordinated motor movements. A servo-actuated pen holder lifts and lowers the pen between strokes, and odometry feedback keeps the drawing aligned across the full page.",
+      },
+      {
+        id: "results",
+        title: "Results",
+        content:
+          "The robot reproduces recognizable line drawings from photographs, handling curves, fine detail, and large fills. Draw time depends on image complexity — simple logos take a few minutes, detailed portraits up to fifteen.",
       },
     ],
   },

@@ -268,6 +268,17 @@ export default function ProjectPage() {
                 <p className="text-[16px] md:text-[17px] leading-[1.8] text-[#444]">
                   {section.content}
                 </p>
+                {section.image && (
+                  <div className="mt-6 rounded-lg overflow-hidden">
+                    <Image
+                      src={section.image}
+                      alt={section.title}
+                      width={720}
+                      height={450}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                )}
               </>
             )}
           </section>
