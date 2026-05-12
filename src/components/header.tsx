@@ -7,7 +7,6 @@ const leftLinks = [
   { label: "ryan", href: "/", isName: true },
   { label: "projects", href: "/projects" },
   { label: "experience", href: "/experience" },
-  { label: "hobbies", href: "/hobbies" },
 ];
 
 const rightLinks = [

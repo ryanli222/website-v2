@@ -2,7 +2,6 @@ import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { ProjectCard } from "@/components/project-card";
 import { ExperienceCard } from "@/components/experience-card";
-import { HobbyCard } from "@/components/hobby-card";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
@@ -24,6 +23,8 @@ export default function Home() {
               <ProjectCard
                 title="Autonomous Wheelchair"
                 category="YHack 1st Place Hardware"
+                image="/chair.png"
+                imageStyle="bottom"
                 delay="delay-2"
                 href="/projects/autonomous-wheelchair"
               />
@@ -67,24 +68,10 @@ export default function Home() {
               description="CAN bus communication, sensor integration, and real-time control loops for the electric race car. Suspension geometry design and analysis for the mechanical performance of the vehicle."
               image="/car.png"
               delay="delay-6"
+              href="/experience/uwfe"
             />
           </div>
 
-          {/* Hobbies */}
-          {false &&(
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-            <HobbyCard
-              title="Music"
-              emoji="🎵"
-              delay="delay-6"
-            />
-            <HobbyCard
-              title="Anime"
-              emoji="⛩️"
-              delay="delay-7"
-            />
-          </div>
-          )}
         </main>
 
         <Footer />

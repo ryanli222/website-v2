@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface ExperienceCardProps {
   role: string;
@@ -6,11 +7,19 @@ interface ExperienceCardProps {
   description: string;
   image?: string;
   delay: string;
+  href?: string;
 }
 
-export function ExperienceCard({ role, company, description, image, delay }: ExperienceCardProps) {
-  return (
-    <div className={`animate-fade-in ${delay} card overflow-hidden group`}>
+export function ExperienceCard({
+  role,
+  company,
+  description,
+  image,
+  delay,
+  href,
+}: ExperienceCardProps) {
+  const inner = (
+    <>
       <div className="px-6 pt-5 pb-3">
         <div className="flex items-center justify-between mb-3">
           <span
@@ -55,6 +64,17 @@ export function ExperienceCard({ role, company, description, image, delay }: Exp
           />
         </div>
       )}
-    </div>
+    </>
   );
+
+  const className = `animate-fade-in ${delay} card overflow-hidden group block`;
+
+  if (href) {
+    return (
+      <Link href={href} className={className}>
+        {inner}
+      </Link>
+    );
+  }
+  return <div className={className}>{inner}</div>;
 }

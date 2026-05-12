@@ -8,6 +8,20 @@ import { getProjectBySlug } from "@/data/projects";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import ModelViewer from "@/components/model-viewer";
+import PidSimulator from "@/components/pid-simulator";
+import dynamic from "next/dynamic";
+
+const ArchitectureDiagram = dynamic(
+  () => import("@/components/architecture-diagram"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full rounded-lg border border-dashed border-[#d4d4d4] bg-[#fafafa] p-8 text-center">
+        <p className="text-[13px] text-[#999] lowercase">loading diagram…</p>
+      </div>
+    ),
+  },
+);
 import { useState, useEffect, useRef } from "react";
 
 export default function ProjectPage() {
@@ -265,18 +279,44 @@ export default function ProjectPage() {
                     {section.title}
                   </span>
                 </h2>
-                <p className="text-[16px] md:text-[17px] leading-[1.8] text-[#444]">
-                  {section.content}
-                </p>
-                {section.image && (
-                  <div className="mt-6 rounded-lg overflow-hidden">
-                    <Image
-                      src={section.image}
-                      alt={section.title}
-                      width={720}
-                      height={450}
-                      className="w-full h-auto"
+                {section.content.split(/\n{2,}/).map((paragraph, pi) => (
+                  <p
+                    key={pi}
+                    className="text-[16px] md:text-[17px] leading-[1.8] text-[#444] mb-5 last:mb-0"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+                {section.architecture && (
+                  <div className="mt-6">
+                    <ArchitectureDiagram
+                      groups={section.architecture.groups}
+                      edges={section.architecture.edges}
+                      nodeDetails={section.nodeDetails}
                     />
+                  </div>
+                )}
+                {section.image &&
+                  (Array.isArray(section.image)
+                    ? section.image
+                    : [section.image]
+                  ).map((src, ii) => (
+                    <div
+                      key={`${src}-${ii}`}
+                      className="mt-6 rounded-lg overflow-hidden"
+                    >
+                      <Image
+                        src={src}
+                        alt={section.title}
+                        width={720}
+                        height={450}
+                        className="w-full h-auto"
+                      />
+                    </div>
+                  ))}
+                {section.id === "motor-control" && slug === "autonomous-wheelchair" && (
+                  <div className="mt-8">
+                    <PidSimulator />
                   </div>
                 )}
               </>
@@ -292,7 +332,7 @@ export default function ProjectPage() {
       <div className="w-full max-w-[1500px] px-8 md:px-12 lg:px-16 xl:px-20">
         <Header activeTab="projects" />
 
-        <main className="max-w-[720px] mx-auto pb-16 pt-8">
+        <main className={`${isRoboticHand ? "max-w-[720px]" : "max-w-[1040px]"} mx-auto pb-16 pt-8`}>
           <div className="animate-fade-in delay-1">
             <h1 className="text-[28px] md:text-[34px] font-bold leading-[1.2] tracking-[-0.01em] text-[#1a1a1a] mb-8 lowercase">
               {project.title} - {project.subtitle}
@@ -353,14 +393,24 @@ export default function ProjectPage() {
             <>
               {project.image ? (
                 <div className="animate-fade-in delay-2 mb-5">
-                  <div className="relative w-full h-[350px] md:h-[450px] overflow-hidden">
+                  {project.imageFull ? (
                     <Image
                       src={project.image}
                       alt={project.title}
-                      fill
-                      className="object-cover"
+                      width={1920}
+                      height={1080}
+                      className="w-full h-auto rounded-lg"
                     />
-                  </div>
+                  ) : (
+                    <div className="relative w-full h-[350px] md:h-[450px] overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
                 </div>
               ) : null}
 
