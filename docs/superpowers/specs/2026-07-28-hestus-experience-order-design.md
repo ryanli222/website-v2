@@ -5,6 +5,7 @@
 Update the portfolio indexes without adding a Hestus detail page:
 
 - Place Scroll Wizard third on the Projects tab.
+- Remove the VEX Drawing Robot project from the website.
 - Add Hestus as the first experience entry.
 - Show Hestus and UWFE side by side on both the homepage and Experience tab at medium viewports and above, stacking them on mobile.
 - Link the Hestus card directly to the official Hestus product.
@@ -31,6 +32,8 @@ The Projects tab begins with:
 
 All remaining projects retain their existing relative order. The homepage project arrangement does not change.
 
+The VEX Drawing Robot entry is removed from the shared project data rather than hidden only on the index. It no longer appears on the Projects tab, and `/projects/vex-drawing-robot` returns the existing project-not-found state.
+
 Experience ordering is:
 
 1. Hestus
@@ -52,6 +55,7 @@ Add an optional `href` to the `Experience` data type. The Experience tab reads t
 
 - Data test confirms Hestus copy, ordering, and product URL.
 - Browser test confirms Scroll Wizard is third on the Projects tab.
+- Data and browser tests confirm VEX Drawing Robot is absent and its former detail route returns the project-not-found state.
 - Browser test confirms Hestus precedes UWFE and both cards share a two-column row on desktop while stacking on mobile.
 - Browser test confirms the Hestus card links to the official product with safe external-link attributes.
 - Changed-file lint, the existing project browser suite, and a production build must pass.
