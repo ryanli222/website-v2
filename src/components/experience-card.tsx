@@ -18,6 +18,9 @@ export function ExperienceCard({
   delay,
   href,
 }: ExperienceCardProps) {
+  const isExternal =
+    href?.startsWith("http://") || href?.startsWith("https://");
+
   const inner = (
     <>
       <div className="px-6 pt-5 pb-3">
@@ -71,7 +74,12 @@ export function ExperienceCard({
 
   if (href) {
     return (
-      <Link href={href} className={className}>
+      <Link
+        href={href}
+        className={className}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
+      >
         {inner}
       </Link>
     );

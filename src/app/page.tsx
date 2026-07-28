@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero";
 import { ProjectCard } from "@/components/project-card";
 import { ExperienceCard } from "@/components/experience-card";
 import { Footer } from "@/components/footer";
+import { experiences } from "@/data/experience";
 
 export default function Home() {
   return (
@@ -61,15 +62,18 @@ export default function Home() {
           </div>
 
           {/* Experience */}
-          <div className="mt-4">
-            <ExperienceCard
-              role="Suspension + Firmware Engineer"
-              company="UWFE"
-              description="CAN bus communication, sensor integration, and real-time control loops for the electric race car. Suspension geometry design and analysis for the mechanical performance of the vehicle."
-              image="/car.png"
-              delay="delay-6"
-              href="/experience/uwfe"
-            />
+          <div className="mt-4 grid grid-cols-1 items-start gap-4 md:grid-cols-2">
+            {experiences.slice(0, 2).map((experience, index) => (
+              <ExperienceCard
+                key={experience.slug}
+                role={experience.role}
+                company={experience.company}
+                description={experience.description}
+                image={experience.image}
+                delay={`delay-${Math.min(index + 6, 7)}`}
+                href={experience.href}
+              />
+            ))}
           </div>
 
         </main>

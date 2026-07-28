@@ -17,6 +17,7 @@ export interface Experience {
   role: string;
   company: string;
   description: string;
+  href?: string;
   image?: string;
   date?: string;
   stack?: string[];
@@ -29,11 +30,19 @@ export function getExperienceBySlug(slug: string): Experience | undefined {
 
 export const experiences: Experience[] = [
   {
+    slug: "hestus",
+    role: "Software Engineer",
+    company: "Hestus (YC S24)",
+    description: "Datasets and tooling.",
+    href: "https://www.hestus.co/",
+  },
+  {
     slug: "uwfe",
     role: "Suspension + Firmware Engineer",
     company: "UWFE",
     description:
       "CAN bus communication, sensor integration, and real-time control loops for the electric race car. Suspension geometry design and analysis for the mechanical performance of the vehicle.",
+    href: "/experience/uwfe",
     image: "/car.png",
     date: "2025 — present",
     stack: ["C++", "Arduino", "CAN", "SolidWorks", "CNC Machining"],

@@ -45,7 +45,7 @@ export interface Project {
   }[];
 }
 
-export const projects: Project[] = [
+const projectCatalog: Project[] = [
   {
     slug: "scroll-wizard",
     title: "Scroll Wizard",
@@ -651,33 +651,21 @@ export const projects: Project[] = [
       },
     ],
   },
-  {
-    slug: "vex-drawing-robot",
-    title: "VEX Drawing Robot",
-    subtitle: "Autonomous Image-Tracing Robot",
-    date: "2026",
-    stack: ["C++", "VEX V5", "Python", "OpenCV", "Path Planning"],
-    sections: [
-      {
-        id: "overview",
-        title: "Overview",
-        content:
-          "A VEX robotics platform repurposed into an autonomous drawing machine. Given any input image, the robot converts it into a series of pen strokes and physically draws it on paper using a custom pen-holder mechanism mounted to the drivetrain.",
-      },
-      {
-        id: "how-it-works",
-        title: "How It Works",
-        content:
-          "A Python preprocessing pipeline takes an input image, applies edge detection and contour extraction with OpenCV, then converts the contours into an optimized sequence of waypoints using a nearest-neighbor path planner to minimize pen-up travel time. The waypoints are sent to the VEX V5 brain over serial, which executes them as coordinated motor movements. A servo-actuated pen holder lifts and lowers the pen between strokes, and odometry feedback keeps the drawing aligned across the full page.",
-      },
-      {
-        id: "results",
-        title: "Results",
-        content:
-          "The robot reproduces recognizable line drawings from photographs, handling curves, fine detail, and large fills. Draw time depends on image complexity — simple logos take a few minutes, detailed portraits up to fifteen.",
-      },
-    ],
-  },
+];
+
+const projectIndexOrder = [
+  "autonomous-wheelchair",
+  "canopi",
+  "scroll-wizard",
+];
+
+export const projects = [
+  ...projectIndexOrder.flatMap((slug) =>
+    projectCatalog.filter((project) => project.slug === slug),
+  ),
+  ...projectCatalog.filter(
+    (project) => !projectIndexOrder.includes(project.slug),
+  ),
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {

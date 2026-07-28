@@ -10,7 +10,7 @@ export default function ExperiencePage() {
         <Header activeTab="experience" />
 
         <main className="pb-16">
-          <div className="flex flex-col gap-4">
+          <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2">
             {experiences.map((exp, i) => (
               <ExperienceCard
                 key={exp.slug}
@@ -19,6 +19,7 @@ export default function ExperiencePage() {
                 description={exp.description}
                 image={exp.image}
                 delay={`delay-${Math.min(i + 1, 7)}`}
+                href={exp.href}
               />
             ))}
           </div>
