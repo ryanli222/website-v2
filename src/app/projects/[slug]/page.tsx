@@ -412,7 +412,11 @@ export default function ProjectPage() {
                         fill
                         priority
                         sizes="(max-width: 1040px) 100vw, 1040px"
-                        className="object-cover"
+                        className={
+                          project.imageDetailFit === "contain"
+                            ? "object-contain"
+                            : "object-cover"
+                        }
                       />
                     </div>
                   )}

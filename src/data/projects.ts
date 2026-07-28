@@ -32,6 +32,7 @@ export interface Project {
   links?: { label: string; href: string; icon?: "github" | "external" }[];
   image?: string;
   imageStyle?: "contain" | "bottom" | "overflow" | "full";
+  imageDetailFit?: "cover" | "contain";
   imageFull?: boolean;
   sections: {
     id: string;
@@ -210,6 +211,7 @@ export const projects: Project[] = [
     date: "2026",
     image: "/chair.png",
     imageStyle: "bottom",
+    imageDetailFit: "contain",
     stack: [
       "Python",
       "Arduino C++",
