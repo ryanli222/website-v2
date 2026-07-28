@@ -54,7 +54,7 @@ export default function Home() {
               title="Scroll Wizard"
               category="Projects"
               image="/projects/scroll-wizard/kynexa-card.png"
-              imageStyle="screen"
+              imageStyle="bottom"
               delay="delay-5"
               href="/projects/scroll-wizard"
             />

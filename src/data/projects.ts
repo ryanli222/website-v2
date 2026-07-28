@@ -31,7 +31,7 @@ export interface Project {
   stack: string[];
   links?: { label: string; href: string; icon?: "github" | "external" }[];
   image?: string;
-  imageStyle?: "contain" | "bottom" | "overflow" | "full" | "screen";
+  imageStyle?: "contain" | "bottom" | "overflow" | "full";
   imageDetailFit?: "cover" | "contain";
   imageFull?: boolean;
   sections: {
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     subtitle: "Agent Skill + CLI for Scroll-Scrub Websites",
     date: "2026",
     image: "/projects/scroll-wizard/kynexa-card.png",
-    imageStyle: "screen",
+    imageStyle: "bottom",
     imageFull: true,
     stack: [
       "Node.js",

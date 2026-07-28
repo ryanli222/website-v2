@@ -10,7 +10,7 @@ test("Scroll Wizard exposes the approved KYNEXA portfolio story", () => {
   assert.equal(project.title, "Scroll Wizard");
   assert.equal(project.sections.length, 6);
   assert.equal(project.image, "/projects/scroll-wizard/kynexa-card.png");
-  assert.equal(project.imageStyle, "screen");
+  assert.equal(project.imageStyle, "bottom");
   assert.deepEqual(
     project.sections.map((section) => section.title),
     [
