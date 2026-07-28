@@ -8,6 +8,7 @@ interface ProjectCardProps {
   imageStyle?: "contain" | "bottom" | "overflow" | "full";
   icon?: React.ReactNode;
   hoverScale?: number;
+  priority?: boolean;
   delay: string;
   href?: string;
 }
@@ -19,6 +20,7 @@ export function ProjectCard({
   imageStyle = "contain",
   icon,
   hoverScale,
+  priority = false,
   delay,
   href = "#",
 }: ProjectCardProps) {
@@ -56,6 +58,8 @@ export function ProjectCard({
               src={image}
               alt={title}
               fill
+              priority={priority}
+              sizes="(max-width: 639px) calc(100vw - 4rem), (max-width: 1023px) calc(50vw - 4rem), calc(33vw - 4rem)"
               className={`${imageStyle === "full" ? "object-cover" : "drop-shadow-lg"} ${imageStyle === "bottom" ? "object-contain object-bottom" : imageStyle === "overflow" ? "object-contain drop-shadow-xl" : imageStyle === "full" ? "" : "object-contain"}`}
             />
           </div>

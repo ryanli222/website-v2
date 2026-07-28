@@ -18,6 +18,7 @@ export default function ProjectsPage() {
                 category={project.date}
                 image={project.image}
                 imageStyle={project.imageStyle}
+                priority={i === 0}
                 delay={`delay-${Math.min(i + 1, 7)}`}
                 href={`/projects/${project.slug}`}
               />

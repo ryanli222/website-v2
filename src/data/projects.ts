@@ -13,6 +13,15 @@ export type ArchitectureDiagramData = {
   }[];
 };
 
+export interface ProjectVideo {
+  src: string;
+  poster: string;
+  label: string;
+  autoPlay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  controls?: boolean;
+}
 export interface Project {
   slug: string;
   title: string;
@@ -22,19 +31,91 @@ export interface Project {
   stack: string[];
   links?: { label: string; href: string; icon?: "github" | "external" }[];
   image?: string;
-  imageStyle?: "contain" | "bottom" | "overflow";
+  imageStyle?: "contain" | "bottom" | "overflow" | "full";
   imageFull?: boolean;
   sections: {
     id: string;
     title: string;
     content: string;
     image?: string | string[];
+    video?: ProjectVideo;
     architecture?: ArchitectureDiagramData;
     nodeDetails?: Record<string, { title: string; body: string }>;
   }[];
 }
 
 export const projects: Project[] = [
+  {
+    slug: "scroll-wizard",
+    title: "Scroll Wizard",
+    subtitle: "Agent Skill + CLI for Scroll-Scrub Websites",
+    date: "2026",
+    image: "/projects/scroll-wizard/kynexa-poster.webp",
+    imageStyle: "full",
+    imageFull: true,
+    stack: [
+      "Node.js",
+      "JavaScript",
+      "Playwright",
+      "ffmpeg",
+      "HTML Canvas",
+      "Lenis",
+    ],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/ryanli222/scroll-wizard",
+        icon: "github",
+      },
+    ],
+    sections: [
+      {
+        id: "overview",
+        title: "Overview",
+        content:
+          "Scroll Wizard is a cross-harness agent skill and standalone CLI that turns a short creative brief plus source video or keyframes into a deployable scroll-scrub website. I built it to make cinematic, scroll-driven storytelling repeatable: instead of hand-wiring every timeline, the workflow captures the story, visual direction, timing, overlays, and media budget as reviewable project files before generating the site.",
+      },
+      {
+        id: "how-it-works",
+        title: "How It Works",
+        content:
+          "Each project moves through explicit approval gates for the brief, storyboard, motion plan, stills, video, extraction, theme, and final preview. Scroll Wizard validates the source media, plans multi-clip motion when a provider has duration limits, stitches approved clips, extracts an optimized frame sequence, and scaffolds a static site from a structured values file. The result stays reproducible: design changes go back through the configuration and scaffold rather than becoming one-off edits inside generated files.",
+      },
+      {
+        id: "kynexa-demo",
+        title: "KYNEXA Demo",
+        content:
+          "KYNEXA is a generated example for a fictional robotic motion-systems company. The experience follows one continuous journey through a dark test facility, moving from individual motors, transmissions, sensing, and control to complete humanoid and quadruped systems. The recording below was captured from the generated local site with headless Chromium; every scene is driven by scroll position and reverses naturally when the visitor scrolls back.",
+        video: {
+          src: "/projects/scroll-wizard/kynexa-demo.mp4",
+          poster: "/projects/scroll-wizard/kynexa-poster.webp",
+          label: "KYNEXA robotics website generated with Scroll Wizard, shown from its opening facility scene through the final robot reveal",
+          autoPlay: true,
+          loop: true,
+          muted: true,
+          controls: true,
+        },
+      },
+      {
+        id: "design-controls",
+        title: "Design Controls",
+        content:
+          "The generator separates story decisions from rendering details. Direction presets define typography, color, scrim strength, chrome, easing, and reveal travel; overlay variants control whether a beat behaves like a hero, metric, caption, or other narrative moment. Per-beat timing supports readable spans and deliberate holds, while section definitions let the cinematic sequence hand off to conventional content without breaking the page rhythm. Reduced-motion behavior and responsive overlay geometry are part of the generated runtime rather than cleanup work added at the end.",
+      },
+      {
+        id: "technical-implementation",
+        title: "Technical Implementation",
+        content:
+          "The package runs on Node.js and uses ffprobe and ffmpeg for media validation, frame extraction, clip stitching, poster generation, and payload reporting. Generated sites are static HTML, CSS, JSON, and JavaScript. A canvas-based scrub engine maps page progress to the frame sequence, while Lenis provides an optional smooth-scroll layer and the interaction runtime handles navigation, hotspots, galleries, pickers, and calls to action. Unit, integration, and Playwright browser suites protect the CLI contracts and the generated experience.",
+      },
+      {
+        id: "outcome",
+        title: "Outcome",
+        content:
+          "Scroll Wizard turned a fragile one-page visual effect into a reusable production workflow. The same tool can support product-focused and full-3D directions, preserve a clear record of creative approvals, and produce a portable site that can be served from any static host. KYNEXA shows the full path working together: authored beats, generated motion, optimized media, responsive copy, reversible scrolling, and a browser-ready final experience.",
+      },
+    ],
+  },
   {
     slug: "autonomous-wheelchair",
     title: "Autonomous Wheelchair Attachment",

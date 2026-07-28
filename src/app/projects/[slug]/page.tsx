@@ -9,6 +9,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import ModelViewer from "@/components/model-viewer";
 import PidSimulator from "@/components/pid-simulator";
+import { ProjectVideo } from "@/components/project-video";
 import dynamic from "next/dynamic";
 
 const ArchitectureDiagram = dynamic(
@@ -314,6 +315,7 @@ export default function ProjectPage() {
                       />
                     </div>
                   ))}
+                {section.video && <ProjectVideo video={section.video} />}
                 {section.id === "motor-control" && slug === "autonomous-wheelchair" && (
                   <div className="mt-8">
                     <PidSimulator />
@@ -399,6 +401,7 @@ export default function ProjectPage() {
                       alt={project.title}
                       width={1920}
                       height={1080}
+                      priority
                       className="w-full h-auto rounded-lg"
                     />
                   ) : (
@@ -407,6 +410,8 @@ export default function ProjectPage() {
                         src={project.image}
                         alt={project.title}
                         fill
+                        priority
+                        sizes="(max-width: 1040px) 100vw, 1040px"
                         className="object-cover"
                       />
                     </div>
