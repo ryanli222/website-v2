@@ -35,4 +35,27 @@ test("Scroll Wizard exposes the approved KYNEXA portfolio story", () => {
       (link) => link.href === "https://github.com/ryanli222/scroll-wizard",
     ),
   );
+
+  const technicalSection = project.sections.find(
+    (section) => section.id === "technical-implementation",
+  );
+  assert.ok(technicalSection?.architecture);
+  assert.deepEqual(
+    technicalSection.architecture.groups.map((group) => group.id),
+    ["INPUTS", "PIPELINE", "RUNTIME", "OUTPUT"],
+  );
+  assert.deepEqual(
+    technicalSection.architecture.edges.map((edge) => [edge.from, edge.to]),
+    [
+      ["BRIEF", "PLAN"],
+      ["MEDIA", "PLAN"],
+      ["PLAN", "VALIDATE"],
+      ["VALIDATE", "EXTRACT"],
+      ["EXTRACT", "SCAFFOLD"],
+      ["SCAFFOLD", "CONFIG"],
+      ["CONFIG", "SCRUB"],
+      ["SCRUB", "SITE"],
+    ],
+  );
+  assert.ok(technicalSection.nodeDetails?.SCRUB);
 });

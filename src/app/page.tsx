@@ -51,12 +51,12 @@ export default function Home() {
               href="/projects/canopi"
             />
             <ProjectCard
-              title="ESP32 Network"
+              title="Scroll Wizard"
               category="Projects"
-              image="/esp32.png"
-              imageStyle="bottom"
+              image="/projects/scroll-wizard/kynexa-poster.webp"
+              imageStyle="full"
               delay="delay-5"
-              href="/projects/esp32-network"
+              href="/projects/scroll-wizard"
             />
           </div>
 

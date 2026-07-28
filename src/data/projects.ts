@@ -107,6 +107,93 @@ export const projects: Project[] = [
         title: "Technical Implementation",
         content:
           "The package runs on Node.js and uses ffprobe and ffmpeg for media validation, frame extraction, clip stitching, poster generation, and payload reporting. Generated sites are static HTML, CSS, JSON, and JavaScript. A canvas-based scrub engine maps page progress to the frame sequence, while Lenis provides an optional smooth-scroll layer and the interaction runtime handles navigation, hotspots, galleries, pickers, and calls to action. Unit, integration, and Playwright browser suites protect the CLI contracts and the generated experience.",
+        architecture: {
+          groups: [
+            {
+              id: "INPUTS",
+              label: "creative inputs",
+              cols: 2,
+              nodes: [
+                { id: "BRIEF", label: "brief +\napprovals" },
+                { id: "MEDIA", label: "video or\nkeyframes" },
+              ],
+            },
+            {
+              id: "PIPELINE",
+              label: "generation pipeline",
+              cols: 2,
+              nodes: [
+                { id: "PLAN", label: "motion\nplan" },
+                { id: "VALIDATE", label: "validate +\nstitch" },
+                { id: "EXTRACT", label: "frame\nextraction" },
+                { id: "SCAFFOLD", label: "site\nscaffold" },
+              ],
+            },
+            {
+              id: "RUNTIME",
+              label: "browser runtime",
+              cols: 2,
+              nodes: [
+                { id: "CONFIG", label: "config +\noverlays" },
+                { id: "SCRUB", label: "canvas scrub\nengine" },
+              ],
+            },
+            {
+              id: "OUTPUT",
+              label: "output",
+              cols: 1,
+              nodes: [{ id: "SITE", label: "static deployable\nsite" }],
+            },
+          ],
+          edges: [
+            { from: "BRIEF", to: "PLAN" },
+            { from: "MEDIA", to: "PLAN" },
+            { from: "PLAN", to: "VALIDATE" },
+            { from: "VALIDATE", to: "EXTRACT" },
+            { from: "EXTRACT", to: "SCAFFOLD" },
+            { from: "SCAFFOLD", to: "CONFIG" },
+            { from: "CONFIG", to: "SCRUB" },
+            { from: "SCRUB", to: "SITE" },
+          ],
+        },
+        nodeDetails: {
+          BRIEF: {
+            title: "Brief + approvals",
+            body: "The project brief, storyboard, visual direction, and approval receipts define what is being made before media or runtime work begins.",
+          },
+          MEDIA: {
+            title: "Video or keyframes",
+            body: "Scroll Wizard accepts source video directly or an approved keyframe sequence that can be turned into provider-sized motion clips.",
+          },
+          PLAN: {
+            title: "Motion plan",
+            body: "Beat timing and provider duration limits are converted into deterministic clip boundaries with continuity instructions between every segment.",
+          },
+          VALIDATE: {
+            title: "Validate + stitch",
+            body: "ffprobe checks the incoming media, while ffmpeg joins approved clips and confirms the finished video is decodable and within the intended format.",
+          },
+          EXTRACT: {
+            title: "Frame extraction",
+            body: "The source is sampled into an optimized WebP sequence with explicit dimensions, quality, frame count, and payload reporting.",
+          },
+          SCAFFOLD: {
+            title: "Site scaffold",
+            body: "The CLI assembles the static template only after final media paths and the approved values file are ready.",
+          },
+          CONFIG: {
+            title: "Config + overlays",
+            body: "Structured configuration defines brand tokens, sections, narrative beats, overlay variants, holds, links, and responsive behavior.",
+          },
+          SCRUB: {
+            title: "Canvas scrub engine",
+            body: "The browser runtime maps scroll progress to frame playback, smooths movement, manages holds, and keeps reverse scrolling deterministic.",
+          },
+          SITE: {
+            title: "Static deployable site",
+            body: "The output is portable HTML, CSS, JSON, JavaScript, and optimized media that can be hosted without an application server.",
+          },
+        },
       },
       {
         id: "outcome",
