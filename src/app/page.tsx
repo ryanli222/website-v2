@@ -53,8 +53,8 @@ export default function Home() {
             <ProjectCard
               title="Scroll Wizard"
               category="Projects"
-              image="/projects/scroll-wizard/kynexa-poster.webp"
-              imageStyle="full"
+              image="/projects/scroll-wizard/kynexa-card.png"
+              imageStyle="screen"
               delay="delay-5"
               href="/projects/scroll-wizard"
             />

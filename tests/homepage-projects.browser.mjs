@@ -29,6 +29,17 @@ test("homepage shows Scroll Wizard where ESP32 used to be", async () => {
       await page.locator('a[href="/projects/esp32-network"]').count(),
       0,
     );
+    const scrollWizardImage = page.getByAltText("Scroll Wizard");
+    assert.match(
+      decodeURIComponent(await scrollWizardImage.getAttribute("src")),
+      /\/projects\/scroll-wizard\/kynexa-card\.png/,
+    );
+    assert.equal(
+      await scrollWizardImage.evaluate(
+        (element) => getComputedStyle(element).objectFit,
+      ),
+      "contain",
+    );
     await page.goto("http://127.0.0.1:3000/projects");
     assert.equal(
       await page.locator('a[href="/projects/esp32-network"]').count(),
