@@ -99,3 +99,68 @@ test("experience cards stack with Hestus first on mobile", async () => {
     await browser.close();
   }
 });
+test("portfolio indexes expose route titles and mobile navigation stays within the viewport", async () => {
+  const browser = await chromium.launch({ headless: true });
+
+  try {
+    const page = await browser.newPage({
+      viewport: { width: 390, height: 844 },
+    });
+
+    for (const route of ["/projects", "/experience"]) {
+      await page.goto(`http://127.0.0.1:3000${route}`);
+      assert.equal(await page.locator("main h1").count(), 1);
+      assert.equal(
+        await page.locator("header").evaluate((header) =>
+          header.scrollWidth <= window.innerWidth,
+        ),
+        true,
+      );
+    }
+  } finally {
+    await browser.close();
+  }
+});
+
+test("navigation keeps a custom focus ring and reduced-motion removes entrance animations", async () => {
+  const browser = await chromium.launch({ headless: true });
+
+  try {
+    const page = await browser.newPage();
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("http://127.0.0.1:3000/");
+
+    const projectsLink = page.getByRole("link", { name: "projects", exact: true });
+    await projectsLink.focus();
+
+    assert.equal(
+      await projectsLink.evaluate((link) => getComputedStyle(link).outlineWidth),
+      "2px",
+    );
+    assert.equal(
+      await page.locator(".animate-hero-fade").evaluate((element) =>
+        getComputedStyle(element).animationName,
+      ),
+      "none",
+    );
+  } finally {
+    await browser.close();
+  }
+});
+test("experience cards use readable muted copy", async () => {
+  const browser = await chromium.launch({ headless: true });
+
+  try {
+    const page = await browser.newPage();
+    await page.goto("http://127.0.0.1:3000/experience");
+
+    const description = page.getByText("Datasets and tooling.", { exact: true });
+    assert.equal(await description.count(), 1);
+    assert.equal(
+      await description.evaluate((element) => getComputedStyle(element).color),
+      "rgb(118, 118, 118)",
+    );
+  } finally {
+    await browser.close();
+  }
+});

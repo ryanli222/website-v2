@@ -18,7 +18,7 @@ const ArchitectureDiagram = dynamic(
     ssr: false,
     loading: () => (
       <div className="w-full rounded-lg border border-dashed border-[#d4d4d4] bg-[#fafafa] p-8 text-center">
-        <p className="text-[13px] text-[#999] lowercase">loading diagram…</p>
+        <p className="text-[13px] text-[#767676] lowercase">loading diagram…</p>
       </div>
     ),
   },
@@ -134,10 +134,10 @@ export default function ProjectPage() {
   if (!project) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-white">
-        <p className="text-[15px] text-[#999] mb-4">project not found.</p>
+        <p className="text-[15px] text-[#767676] mb-4">project not found.</p>
         <Link
           href="/"
-          className="text-[13px] text-[#999] hover:text-[#1a1a1a] transition-colors"
+          className="text-[13px] text-[#767676] hover:text-[#1a1a1a] transition-colors"
         >
           back home
         </Link>
@@ -211,7 +211,7 @@ export default function ProjectPage() {
   const contentsNav = (
     <div className="animate-fade-in delay-3">
       <p
-        className="text-[11px] font-semibold text-[#999] uppercase tracking-[0.12em] mb-4"
+        className="text-[11px] font-semibold text-[#767676] uppercase tracking-[0.12em] mb-4"
         style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
       >
         contents

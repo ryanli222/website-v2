@@ -242,10 +242,10 @@ export default function MermaidDiagram({
       `}</style>
 
       <div className="flex items-center justify-between mb-2">
-        <p className="text-[11px] font-semibold text-[#999] uppercase tracking-[0.12em]">
+        <p className="text-[11px] font-semibold text-[#767676] uppercase tracking-[0.12em]">
           architecture
         </p>
-        <p className="text-[11px] text-[#999] lowercase">
+        <p className="text-[11px] text-[#767676] lowercase">
           {activeKey ? "click again to close" : "click any node →"}
         </p>
       </div>
@@ -258,7 +258,7 @@ export default function MermaidDiagram({
 
       {nodeDetails && Object.keys(nodeDetails).length > 0 && (
         <div className="mt-4">
-          <p className="text-[11px] font-semibold text-[#999] uppercase tracking-[0.12em] mb-2">
+          <p className="text-[11px] font-semibold text-[#767676] uppercase tracking-[0.12em] mb-2">
             components
           </p>
           <div className="flex flex-wrap gap-2">
@@ -294,7 +294,7 @@ export default function MermaidDiagram({
       >
         {activeDetail ? (
           <div>
-            <p className="text-[11px] font-semibold text-[#999] uppercase tracking-[0.12em] mb-1.5">
+            <p className="text-[11px] font-semibold text-[#767676] uppercase tracking-[0.12em] mb-1.5">
               {activeKey}
             </p>
             <p className="text-[15px] font-semibold text-[#1a1a1a] lowercase mb-2">
@@ -305,7 +305,7 @@ export default function MermaidDiagram({
             </p>
           </div>
         ) : (
-          <p className="text-[13px] text-[#999] text-center lowercase">
+          <p className="text-[13px] text-[#767676] text-center lowercase">
             click any component above to see what it does.
           </p>
         )}

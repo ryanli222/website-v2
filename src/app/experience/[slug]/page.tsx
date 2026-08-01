@@ -99,10 +99,10 @@ export default function ExperiencePage() {
   if (!experience) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-white">
-        <p className="text-[15px] text-[#999] mb-4">experience not found.</p>
+        <p className="text-[15px] text-[#767676] mb-4">experience not found.</p>
         <Link
           href="/"
-          className="text-[13px] text-[#999] hover:text-[#1a1a1a] transition-colors"
+          className="text-[13px] text-[#767676] hover:text-[#1a1a1a] transition-colors"
         >
           back home
         </Link>
@@ -157,7 +157,7 @@ export default function ExperiencePage() {
   const contentsNav = (
     <div className="animate-fade-in delay-3">
       <p
-        className="text-[11px] font-semibold text-[#999] uppercase tracking-[0.12em] mb-4"
+        className="text-[11px] font-semibold text-[#767676] uppercase tracking-[0.12em] mb-4"
         style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
       >
         contents
@@ -189,7 +189,7 @@ export default function ExperiencePage() {
 
         <main className="max-w-[1040px] mx-auto pb-16 pt-8">
           <div className="animate-fade-in delay-1">
-            <p className="text-[13px] text-[#999] lowercase mb-3">
+            <p className="text-[13px] text-[#767676] lowercase mb-3">
               experience · {experience.company}
             </p>
             <h1 className="text-[28px] md:text-[34px] font-bold leading-[1.2] tracking-[-0.01em] text-[#1a1a1a] mb-8 lowercase">

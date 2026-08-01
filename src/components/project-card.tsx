@@ -32,7 +32,7 @@ export function ProjectCard({
       {/* Label row */}
       <div className="flex items-center justify-between px-5 pt-4 pb-3">
         <span
-          className="text-[13px] text-[#999]"
+          className="text-[13px] text-[#767676]"
           style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
         >
           {category} · {title}

@@ -26,7 +26,7 @@ export function Header({ activeTab }: HeaderProps = {}) {
 
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const [activeIdx, setActiveIdx] = useState<number>(defaultIdx >= 0 ? defaultIdx : 0);
-  const navRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   const [pillStyle, setPillStyle] = useState<{
@@ -58,22 +58,21 @@ export function Header({ activeTab }: HeaderProps = {}) {
   }, [hoveredIdx, activeIdx]);
 
   return (
-    <header className="flex items-center justify-between pt-4 pb-3 -ml-6">
-      {/* Left nav with sliding pill */}
-      <div
+    <header className="flex flex-col items-start gap-3 pt-4 pb-3 sm:-ml-6 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
+      <nav
         ref={navRef}
-        className="animate-slide-left relative flex items-center gap-0 text-[13px] rounded-lg border border-[#eee] bg-white px-0.5 py-0.5"
+        aria-label="Primary"
+        className="animate-slide-left relative flex items-center gap-0 rounded-lg border border-[#eee] bg-white px-0.5 py-0.5 text-[13px]"
         style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif", boxShadow: "0 2px 8px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)" }}
         onMouseLeave={() => setHoveredIdx(null)}
       >
-        {/* Sliding pill background */}
         <div
-          className="absolute top-0.5 h-[calc(100%-4px)] rounded-md bg-[#f5f5f5] pointer-events-none"
+          className="pointer-events-none absolute top-0.5 h-[calc(100%-4px)] rounded-md bg-[#f5f5f5]"
           style={{
             left: pillStyle.left,
             width: pillStyle.width,
             opacity: pillStyle.opacity,
-            transition: "left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), width 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.15s ease",
+            transition: "left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.15s ease",
           }}
         />
 
@@ -82,10 +81,10 @@ export function Header({ activeTab }: HeaderProps = {}) {
             key={link.label}
             ref={(el) => { linkRefs.current[i] = el; }}
             href={link.href}
-            className={`relative z-10 px-3 py-1 rounded-md transition-colors duration-200 ${
+            className={`relative z-10 rounded-md px-3 py-1 transition-colors duration-200 ${
               link.isName
                 ? "font-medium text-[#1a1a1a]"
-                : "text-[#999] hover:text-[#555]"
+                : "text-[#767676] hover:text-[#555]"
             }`}
             onMouseEnter={() => setHoveredIdx(i)}
             onClick={() => setActiveIdx(i)}
@@ -93,11 +92,11 @@ export function Header({ activeTab }: HeaderProps = {}) {
             {link.label}
           </Link>
         ))}
-      </div>
+      </nav>
 
-      {/* Right nav */}
       <nav
-        className="animate-slide-left flex items-center gap-5 text-[13px] text-[#999]"
+        aria-label="External links"
+        className="animate-slide-left flex w-full flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-[#767676] sm:w-auto sm:flex-nowrap"
         style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
       >
         {rightLinks.map((link) => (
@@ -105,7 +104,7 @@ export function Header({ activeTab }: HeaderProps = {}) {
             key={link.label}
             href={link.href}
             {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            className="hover:text-[#1a1a1a] transition-colors duration-200"
+            className="transition-colors duration-200 hover:text-[#1a1a1a]"
           >
             {link.label}
           </a>

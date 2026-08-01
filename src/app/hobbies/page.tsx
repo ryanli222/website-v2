@@ -43,7 +43,7 @@ export default function HobbiesPage() {
 
                 {/* Label in corner */}
                 <span
-                  className="absolute top-3 left-4 text-[13px] text-[#999] z-10"
+                  className="absolute top-3 left-4 text-[13px] text-[#767676] z-10"
                   style={{
                     fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
                   }}

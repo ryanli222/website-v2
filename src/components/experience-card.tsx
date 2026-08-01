@@ -26,7 +26,7 @@ export function ExperienceCard({
       <div className="px-6 pt-5 pb-3">
         <div className="flex items-center justify-between mb-3">
           <span
-            className="text-[13px] text-[#999]"
+            className="text-[13px] text-[#767676]"
             style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
           >
             Experience · {company}
@@ -50,7 +50,7 @@ export function ExperienceCard({
           {role}
         </h3>
         <p
-          className="text-[15px] text-[#999] leading-relaxed"
+          className="text-[15px] text-[#767676] leading-relaxed"
           style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
         >
           {description}

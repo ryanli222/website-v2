@@ -3,11 +3,11 @@
 :root {
   --background: #ffffff;
   --foreground: #1a1a1a;
-  --muted: #b5b5b5;
+  --muted: #767676;
   --card-bg: #ffffff;
   --card-border: #ebebeb;
   --accent: #1a1a1a;
-  --nav-text: #999999;
+  --nav-text: #767676;
 }
 
 @theme inline {
@@ -28,6 +28,15 @@ body {
   -webkit-font-smoothing: antialiased;
   margin: 0;
   padding: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 3px;
 }
 
 /* ── Card styles ── */
@@ -293,4 +302,24 @@ input[type="range"]::-moz-range-thumb {
 ::-webkit-scrollbar-thumb {
   background: #d4d4d4;
   border-radius: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .animate-fade-in,
+  .animate-slide-left,
+  .animate-hero-fade,
+  .hobby-block {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

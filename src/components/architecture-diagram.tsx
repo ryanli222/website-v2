@@ -98,10 +98,10 @@ export default function ArchitectureDiagram({
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-2">
-        <p className="text-[11px] font-semibold text-[#999] uppercase tracking-[0.12em]">
+        <p className="text-[11px] font-semibold text-[#767676] uppercase tracking-[0.12em]">
           architecture
         </p>
-        <p className="text-[11px] text-[#999] lowercase">
+        <p className="text-[11px] text-[#767676] lowercase">
           {activeKey ? "esc or click backdrop to close" : "click any node →"}
         </p>
       </div>
@@ -234,12 +234,12 @@ export default function ArchitectureDiagram({
               <button
                 type="button"
                 onClick={() => setActiveKey(null)}
-                className="absolute top-3 right-3 w-7 h-7 flex items-center justify-center text-[#999] hover:text-[#1a1a1a] hover:bg-[#f5f5f5] rounded-full transition-colors text-[18px] leading-none"
+                className="absolute top-3 right-3 w-7 h-7 flex items-center justify-center text-[#767676] hover:text-[#1a1a1a] hover:bg-[#f5f5f5] rounded-full transition-colors text-[18px] leading-none"
                 aria-label="close"
               >
                 ×
               </button>
-              <p className="text-[11px] font-semibold text-[#999] uppercase tracking-[0.12em] mb-1.5">
+              <p className="text-[11px] font-semibold text-[#767676] uppercase tracking-[0.12em] mb-1.5">
                 {activeKey}
               </p>
               <p className="text-[16px] font-semibold text-[#1a1a1a] lowercase mb-3 pr-6">
