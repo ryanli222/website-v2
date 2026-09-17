@@ -197,8 +197,8 @@ select:focus-visible {
 
 /* ── Quick pop animation (non-home pages or repeat visits) ── */
 @keyframes quickPop {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% { opacity: 0; transform: none; }
+  100% { opacity: 1; transform: none; }
 }
 
 .no-animations .animate-fade-in,
