@@ -208,11 +208,30 @@ export default function ProjectPage() {
     event.preventDefault();
     focusSection(sectionAnchor);
   };
+  const projectLinks = project.links?.length ? (
+    <p className="text-[14px] leading-[1.7] text-[#666] lowercase">
+      links:{" "}
+      {project.links.map((link, i) => (
+        <span key={link.href}>
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#1a1a1a] underline decoration-[#ccc] underline-offset-2 hover:decoration-[#1a1a1a] transition-colors"
+          >
+            {link.label}
+          </a>
+          {i < project.links!.length - 1 && ", "}
+        </span>
+      ))}
+    </p>
+  ) : null;
+
   const contentsNav = (
     <div className="animate-fade-in delay-3">
       <p
         className="text-[11px] font-semibold text-[#767676] uppercase tracking-[0.12em] mb-4"
-        style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
+        style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
       >
         contents
       </p>
@@ -381,6 +400,7 @@ export default function ProjectPage() {
                     <p className="text-[14px] leading-[1.7] text-[#666] lowercase">
                       tech stack: {project.stack.join(", ")}
                     </p>
+                    {projectLinks}
                   </div>
                 </section>
 
@@ -455,6 +475,7 @@ export default function ProjectPage() {
                 <p className="text-[14px] leading-[1.7] text-[#666] lowercase">
                   tech stack: {project.stack.join(", ")}
                 </p>
+                {projectLinks}
               </div>
 
               <div className="relative flex gap-20">

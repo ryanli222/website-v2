@@ -157,7 +157,7 @@ function LoadingFallback() {
     <Html center>
       <div
         className="rounded-full bg-white/85 px-3 py-1 text-[12px] text-[#666]"
-        style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
+        style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
       >
         loading model...
       </div>
@@ -178,7 +178,7 @@ export default function ModelViewer({
     >
       <p
         className="pointer-events-none absolute left-4 top-4 z-10 text-[12px] text-[#777] md:left-5 md:top-5 md:text-[13px]"
-        style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
+        style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
       >
         check out the CAD!
       </p>

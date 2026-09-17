@@ -158,7 +158,7 @@ export default function ArchitectureDiagram({
                         strokeWidth: 4,
                         strokeLinejoin: "round",
                         fontFamily:
-                          "var(--font-geist-sans), system-ui, sans-serif",
+                          "var(--font-newsreader), Georgia, serif",
                       }}
                     >
                       {edge.label}

@@ -23,7 +23,7 @@ function getMermaid() {
         startOnLoad: false,
         securityLevel: "loose",
         theme: "base",
-        fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+        fontFamily: "var(--font-newsreader), Georgia, serif",
         flowchart: {
           nodeSpacing: 55,
           rankSpacing: 90,

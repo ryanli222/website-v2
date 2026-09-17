@@ -286,7 +286,7 @@ export default function PidSimulator() {
 
       // ── HUD ──
       const monoFont = "11px var(--font-geist-mono), monospace";
-      const sansFont = "11px var(--font-geist-sans), system-ui, sans-serif";
+      const sansFont = "11px var(--font-newsreader), Georgia, serif";
 
       // Wheel PWM readout (bottom-left)
       ctx.fillStyle = "rgba(255,255,255,0.9)";

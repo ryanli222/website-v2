@@ -45,7 +45,7 @@ export default function HobbiesPage() {
                 <span
                   className="absolute top-3 left-4 text-[13px] text-[#767676] z-10"
                   style={{
-                    fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+                    fontFamily: "var(--font-newsreader), Georgia, serif",
                   }}
                 >
                   {block.label}

@@ -36,13 +36,6 @@ export function Header({ activeTab }: HeaderProps = {}) {
   }>({ left: 0, width: 0, opacity: 0 });
 
   useEffect(() => {
-    if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
-    }
-    window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
     const idx = hoveredIdx ?? activeIdx;
     const el = linkRefs.current[idx];
     const nav = navRef.current;
@@ -63,7 +56,7 @@ export function Header({ activeTab }: HeaderProps = {}) {
         ref={navRef}
         aria-label="Primary"
         className="animate-slide-left relative flex items-center gap-0 rounded-lg border border-[#eee] bg-white px-0.5 py-0.5 text-[13px]"
-        style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif", boxShadow: "0 2px 8px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)" }}
+        style={{ fontFamily: "var(--font-newsreader), Georgia, serif", boxShadow: "0 2px 8px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)" }}
         onMouseLeave={() => setHoveredIdx(null)}
       >
         <div
@@ -97,7 +90,7 @@ export function Header({ activeTab }: HeaderProps = {}) {
       <nav
         aria-label="External links"
         className="animate-slide-left flex w-full flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-[#767676] sm:w-auto sm:flex-nowrap"
-        style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
+        style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
       >
         {rightLinks.map((link) => (
           <a

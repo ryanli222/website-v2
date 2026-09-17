@@ -3,7 +3,7 @@ export function Footer() {
     <footer className="py-10 text-center">
       <p
         className="text-[13px] text-[#ccc]"
-        style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
+        style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
       >
         Built by Ryan 🔧
       </p>

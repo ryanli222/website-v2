@@ -14,7 +14,7 @@ export function HobbyCard({ title, image, emoji, delay }: HobbyCardProps) {
       <div className="relative z-10 flex items-center justify-between px-5 pt-4 pb-2">
         <span
           className="text-[13px] text-[#767676]"
-          style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
+          style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
         >
           Hobbies · {title}
         </span>

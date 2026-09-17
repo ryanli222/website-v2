@@ -35,6 +35,7 @@ export const experiences: Experience[] = [
     company: "Hestus (YC S24)",
     description: "Datasets and tooling.",
     href: "https://www.hestus.co/",
+    image: "/logos/hestus.png",
   },
   {
     slug: "uwfe",

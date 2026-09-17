@@ -594,7 +594,14 @@ const projectCatalog: Project[] = [
     title: "Motion Camera",
     subtitle: "Smart Doorbell & Motion-Triggered Camera System",
     date: "2026",
-    stack: ["Python", "Raspberry Pi", "OpenCV", "GPIO", "SQLite", "Flask"],
+    stack: ["Python", "Raspberry Pi", "OpenCV", "MediaPipe", "FastAPI", "PostgreSQL", "MinIO (S3)", "Docker Compose"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/ryanli222/smartdoorbell",
+        icon: "github",
+      },
+    ],
     image: "/cam icon.png",
     imageStyle: "bottom",
     sections: [
@@ -608,14 +615,13 @@ const projectCatalog: Project[] = [
         id: "how-it-works",
         title: "How It Works",
         content:
-          "The system uses OpenCV frame differencing to detect motion in real-time video streams. A PIR sensor provides hardware-level motion detection as a secondary trigger, reducing false positives. When motion exceeds a configurable threshold the camera captures a burst of images, which are stored on disk and indexed in a SQLite database alongside timestamp, motion intensity, and bounding-box coordinates. A Flask web server exposes a simple dashboard where you can browse, filter, and review the picture database — essentially a doorbell camera you fully own and control.",
-        image: "/opencv cam demo.png",
+          "The Pi client uses OpenCV frame differencing to detect motion in real-time video streams, with a PIR sensor as a secondary hardware trigger to reduce false positives. When motion exceeds a configurable threshold the camera captures snapshots and short clips, then uploads them to a FastAPI backend. Media lands in MinIO (S3-compatible object storage) and is referenced by URL from a PostgreSQL events table, with detections stored as extensible JSONB so new models — like MediaPipe hand-gesture recognition — plug in without schema changes. The whole backend runs as a Docker Compose stack, and a local spool with retry keeps uploads reliable over flaky Wi-Fi.",
       },
       {
         id: "results",
         title: "Results",
         content:
-          "The system runs 24/7 on a Raspberry Pi 4, reliably capturing and cataloguing motion events with configurable sensitivity. The picture database grows automatically and can be browsed from any device on the local network. Low power consumption and efficient storage management make it practical as a long-running doorbell camera or wildlife monitor.",
+          "The system runs 24/7 on a Raspberry Pi 4, reliably capturing and cataloguing motion events with configurable sensitivity. The event database grows automatically and can be browsed from any device on the local network. Low power consumption and efficient storage management make it practical as a long-running doorbell camera or wildlife monitor.",
         image: "/doorbell data.png",
       },
     ],

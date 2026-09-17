@@ -26,7 +26,6 @@ export default function ExperiencePage() {
                 key={exp.slug}
                 role={exp.role}
                 company={exp.company}
-                description={exp.description}
                 image={exp.image}
                 delay={`delay-${Math.min(i + 1, 7)}`}
                 href={exp.href}

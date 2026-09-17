@@ -158,7 +158,7 @@ export default function ExperiencePage() {
     <div className="animate-fade-in delay-3">
       <p
         className="text-[11px] font-semibold text-[#767676] uppercase tracking-[0.12em] mb-4"
-        style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
+        style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
       >
         contents
       </p>

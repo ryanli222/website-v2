@@ -11,6 +11,8 @@ interface ProjectCardProps {
   priority?: boolean;
   delay: string;
   href?: string;
+  onPointerEnter?: () => void;
+  style?: React.CSSProperties;
 }
 
 export function ProjectCard({
@@ -23,17 +25,21 @@ export function ProjectCard({
   priority = false,
   delay,
   href = "#",
+  onPointerEnter,
+  style,
 }: ProjectCardProps) {
   return (
     <Link
       href={href}
-      className={`animate-fade-in ${delay} card block group`}
+      className={`animate-fade-in ${delay} card flex flex-col group`}
+      onPointerEnter={onPointerEnter}
+      style={style}
     >
       {/* Label row */}
       <div className="flex items-center justify-between px-5 pt-4 pb-3">
         <span
           className="text-[13px] text-[#767676]"
-          style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
+          style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
         >
           {category} · {title}
         </span>
@@ -51,7 +57,7 @@ export function ProjectCard({
       </div>
 
       {/* Content area */}
-      <div className={`flex items-end justify-center ${imageStyle === "full" ? "h-[350px]" : "h-[300px]"} ${imageStyle === "overflow" ? "overflow-visible" : "overflow-hidden"} ${imageStyle === "full" ? "px-0 pb-0" : imageStyle === "bottom" ? "px-4 pb-0" : imageStyle === "overflow" ? "px-6 pb-0" : "px-6 pb-5"}`}>
+      <div className={`flex grow items-end justify-center ${imageStyle === "full" ? "h-[350px]" : "h-[300px]"} ${imageStyle === "overflow" ? "overflow-visible" : "overflow-hidden"} ${imageStyle === "full" ? "px-0 pb-0" : imageStyle === "bottom" ? "px-4 pb-0" : imageStyle === "overflow" ? "px-6 pb-0" : "px-6 pb-5"}`}>
         {image ? (
           <div className={`card-image relative transition-transform duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${imageStyle === "full" ? "h-full w-full" : imageStyle === "bottom" ? "h-[95%] w-full" : imageStyle === "overflow" ? "h-[110%] w-[70%] translate-y-[15%] group-hover:translate-y-[8%]" : "h-full w-full"}`} style={{ "--hover-scale": hoverScale ?? 1.05 } as React.CSSProperties}>
             <Image
@@ -74,7 +80,7 @@ export function ProjectCard({
           >
             <span
               className="text-[13px] text-[#ccc] font-medium"
-              style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
+              style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
             >
               {title}
             </span>

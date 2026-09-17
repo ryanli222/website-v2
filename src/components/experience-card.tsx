@@ -4,70 +4,44 @@ import Link from "next/link";
 interface ExperienceCardProps {
   role: string;
   company: string;
-  description: string;
   image?: string;
   delay: string;
   href?: string;
 }
 
-export function ExperienceCard({
-  role,
-  company,
-  description,
-  image,
-  delay,
-  href,
-}: ExperienceCardProps) {
+export function ExperienceCard({ role, company, image, delay, href }: ExperienceCardProps) {
   const isExternal =
     href?.startsWith("http://") || href?.startsWith("https://");
 
   const inner = (
-    <>
-      <div className="px-6 pt-5 pb-3">
-        <div className="flex items-center justify-between mb-3">
-          <span
-            className="text-[13px] text-[#767676]"
-            style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
-          >
-            Experience · {company}
-          </span>
-          <div className="card-arrow">
-            <svg
-              className="w-3 h-3 text-[#bbb]"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2.5}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
-            </svg>
-          </div>
-        </div>
-        <h3
-          className="text-[20px] font-medium text-[#1a1a1a] mb-2"
-          style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
-        >
-          {role}
-        </h3>
-        <p
-          className="text-[15px] text-[#767676] leading-relaxed"
-          style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
-        >
-          {description}
-        </p>
-      </div>
+    <div className="flex items-center gap-4 px-5 py-4">
       {image && (
-        <div className="overflow-hidden">
+        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-md">
           <Image
             src={image}
-            alt={role}
-            width={650}
-            height={416}
-            className="w-full h-auto -mt-[15%] transition-transform duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.05]"
+            alt={company}
+            fill
+            sizes="56px"
+            className="object-contain transition-transform duration-[400ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.08]"
           />
         </div>
       )}
-    </>
+      <div className="min-w-0 flex-1">
+        <span className="text-[13px] text-[#767676]">Experience · {company}</span>
+        <h3 className="truncate text-[18px] font-medium text-[#1a1a1a]">{role}</h3>
+      </div>
+      <div className="card-arrow shrink-0">
+        <svg
+          className="w-3 h-3 text-[#bbb]"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2.5}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+        </svg>
+      </div>
+    </div>
   );
 
   const className = `animate-fade-in ${delay} card overflow-hidden group block`;
