@@ -556,7 +556,7 @@ const projectCatalog: Project[] = [
       {
         id: "try-it-out",
         title: "Try it Out",
-        content: "canopi-ai.vercel.app",
+        content: "canopi-psi.vercel.app",
       },
     ],
   },
